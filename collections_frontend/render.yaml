@@ -1,0 +1,8 @@
+# render.yaml
+services:
+  - type: web
+    name: collections-frontend
+    rootDir: collections_frontend
+    buildCommand: npm install && npm run build
+    publishDir: dist
+    env: node
