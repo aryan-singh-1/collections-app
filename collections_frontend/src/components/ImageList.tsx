@@ -44,14 +44,14 @@ const ImageList: React.FC<Props> = ({
   }, []);
 
   const fetchImages = async () => {
-    const res = await axios.get<Image[]>("http://localhost:5000/api/images");
+    const res = await axios.get<Image[]>(`${import.meta.env.VITE_API_BASE}/api/images`);
     setImages(res.data);
     setSelectedImageIds([]);
   };
 
   const fetchCollections = async () => {
     const res = await axios.get<Collection[]>(
-      "http://localhost:5000/api/collections"
+      `${import.meta.env.VITE_API_BASE}/api/collections`
     );
     setCollections(res.data);
   };
@@ -66,7 +66,7 @@ const ImageList: React.FC<Props> = ({
     if (!selectedImageIds.length) return;
     try {
       await axios.post(
-        "http://localhost:5000/api/images/assign-to-collection",
+        `${import.meta.env.VITE_API_BASE}/api/images/assign-to-collection`,
         {
           imageIds: selectedImageIds,
           collectionId,
@@ -176,7 +176,7 @@ const ImageList: React.FC<Props> = ({
                   />
                 )}
                 <img
-                  src={`http://localhost:5000/uploads/${img.filename}`}
+                  src={`${import.meta.env.VITE_API_BASE}/uploads/${img.filename}`}
                   alt={img.name}
                   width="100"
                 />

@@ -25,7 +25,7 @@ const CollectionManager: React.FC<Props> = ({
     try {
       if (existingCollection) {
         await axios.put(
-          `http://localhost:5000/api/collections/${existingCollection.id}`,
+          `${import.meta.env.VITE_API_BASE}/api/collections/${existingCollection.id}`,
           {
             name,
             customer,
@@ -33,7 +33,7 @@ const CollectionManager: React.FC<Props> = ({
         );
         alert("Collection updated successfully");
       } else {
-        await axios.post("http://localhost:5000/api/collections", {
+        await axios.post(`${import.meta.env.VITE_API_BASE}/api/collections`, {
           name,
           customer,
         });

@@ -4,5 +4,5 @@ import axios from "axios";
 import type { Image } from "../types"; // ✅ Correct
 
 export const fetchImages = () => {
-  return axios.get<Image[]>("http://localhost:5000/api/images");
+  return axios.get<Image[]>(`${import.meta.env.VITE_API_BASE}/api/images`);
 };

@@ -23,7 +23,7 @@ const UploadForm: React.FC<Props> = ({ onSuccess }) => {
     formData.append("tags", tags);
 
     try {
-      await axios.post("http://localhost:5000/api/upload", formData);
+      await axios.post(`${import.meta.env.VITE_API_BASE}/api/upload`, formData);
       alert("Image uploaded");
       onSuccess?.();
     } catch (error) {

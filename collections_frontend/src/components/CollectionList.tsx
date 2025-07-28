@@ -18,7 +18,7 @@ const CollectionList: React.FC = () => {
   const fetchCollections = async () => {
     try {
       const res = await axios.get<Collection[]>(
-        "http://localhost:5000/api/collections"
+        `${import.meta.env.VITE_API_BASE}/api/collections`
       );
       setCollections(res.data);
     } catch (error) {
@@ -30,7 +30,7 @@ const CollectionList: React.FC = () => {
     if (!window.confirm("Are you sure you want to delete this collection?"))
       return;
     try {
-      await axios.delete(`http://localhost:5000/api/collections/${id}`);
+      await axios.delete(`${import.meta.env.VITE_API_BASE}/api/collections/${id}`);
       fetchCollections();
     } catch (err) {
       console.error("Delete failed:", err);
